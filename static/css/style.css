@@ -332,11 +332,15 @@ textarea {
 .post-content code{
     display:inline;
 }
-.post-content p code{
-    display:inline;
-    padding: .2em .4em;
+.post-content p code,
+.post-content ul code,
+.post-content ol code,
+.post-content blockquote{
+    display:inline-block;
+    padding: 0 0;
     margin: 0;
-    font-size: 85%;
+    font-weight: lighter;
+    font-size: 0.98rem;
     background-color: rgba(27,31,35,.10);
     border-radius: 3px;
 }
