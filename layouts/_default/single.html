@@ -6,7 +6,7 @@
             <h1 class="post-title">{{ .Title }}</h1>
         </header>
         <date class="post-meta meta-date">
-            {{ .Date.Year }}年{{ printf "%d" .Date.Month }}月{{ .Date.Day }}日
+            {{ .Date.Format "January 2, 2006" }}
         </date>
         {{ with .Params.Categories }}
         <div class="post-meta">
@@ -16,16 +16,11 @@
             {{ end }}
         </div>
         {{ end }}
-        {{ if .Site.Params.busuanzi }}
-        <div class="post-meta">
-            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
-                    阅读</span></span>
-        </div>
-        {{ end }}
+
         {{ if .Params.toc }}
         <div class="clear" style="display: none">
             <div class="toc-article">
-                <div class="toc-title">文章目录</div>
+                <div class="toc-title">Contents</div>
             </div>
         </div>
         {{ end }}
@@ -45,7 +40,7 @@
                 {{ end }}
             </ul>
             {{ else }}
-            没有标签
+            This post has no tags...
             {{ end }}
         </div>
     </article>
