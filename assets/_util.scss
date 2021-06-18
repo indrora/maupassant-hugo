@@ -1,0 +1,58 @@
+@mixin undecorated-anchors {
+    a {
+        text-decoration: none;
+        :visited {
+            text-decoration: none;
+        }
+    }
+}
+
+@mixin autodark {
+    color:$copy-color;
+    background-color: $page-color;
+    @media (prefers-color-scheme: dark) {
+        color: $copy-color-dark;
+        background-color: $page-color-dark;
+        @content;
+    }
+}
+
+
+
+@mixin constrainwidth {
+    
+    @include breakpoint(large) {
+        max-width: 90em;
+    }
+    @include breakpoint(medium) {
+        max-width: 60em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+$xl-width:1441px;
+$lg-width:1025px;
+$md-width:769px;
+$sm-width:481px;
+
+@mixin breakpoint($point) {
+    @if $point == xlarge {
+      @media (min-width: $xl-width) { @content ; }
+   }
+    @else if $point == large {
+      @media (min-width: $lg-width) { @content ; }
+   }
+     @else if $point == medium {
+      @media (min-width: $md-width) { @content ; }
+   }
+    @else if $point == small {
+      @media (min-width: $sm-width) { @content ; }
+   }
+   @else if $point == mini {
+       @media (max-width: $md-width) {
+           @content ;
+       }
+   }
+ }
+ 

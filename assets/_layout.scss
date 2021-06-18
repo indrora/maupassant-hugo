@@ -1,0 +1,155 @@
+@import "style";
+@import 'util';
+
+
+body {
+
+    background-color: $page-color;
+    color: $copy-color;
+    
+    //@include autodark;
+
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    padding-bottom: 1em;
+
+
+    h1,
+    h2,
+    h3 {
+        font-family: 'Vollkorn', serif;
+        color: $accent-color;
+    }
+}
+
+* { 
+    box-sizing:border-box;
+}
+
+.container {
+
+    text-overflow: clip;
+
+    @include undecorated-anchors;
+
+    @include constrainwidth();
+
+
+    padding-top: 2em;
+
+    /*
+     * Main content container 
+     */
+    .main {
+        width: 100% ;
+        min-width: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: $accent-color;
+    }
+
+
+    margin:0;
+    padding-left: 2em;
+    padding-right: 2em;
+    word-wrap: normal;
+
+    p code
+    li, code {
+        word-wrap: break-word;
+    }
+    @include breakpoint(medium) {
+
+        display: flex;
+        flex-direction: row;
+
+        min-width: 0;
+
+        .main {
+            flex: 1 1 auto;
+            padding-right: 1em;
+        }
+        .sidebar {
+            flex: 0 0 auto;
+            width: 15em;
+            //min-width: 15em !important;
+        }
+
+    }
+
+    /* Sidebar content */
+    .sidebar {
+
+        @include breakpoint(mini) {
+            margin-top: 1em;
+            padding-top: 0.5em;
+            border-top: 1px solid $line-color;
+        }
+
+        @include breakpoint(medium) {
+            border-top: 0;  
+            padding-left: 1em;
+            border-left: 1px solid $line-color;
+        }
+
+        .widget {
+            margin-bottom: 30px;
+        }
+        
+        .widget-title {
+            color: #6E7173;
+            margin-top: 0;
+            font-size: 1.1em;
+            border-bottom: 1px solid #ddd;
+            display: block;
+        }
+        
+        #response {
+            margin-bottom: .8em;
+        }
+        
+        .widget-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .widget-list li {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        
+        .widget .tagcloud {
+            margin-top: 10px;
+        }
+        
+        .widget .tagcloud a {
+            line-height: 1.5;
+            padding: 5px;
+        }
+
+    }
+
+}
+
+
+.readmore {
+    font-size: 0.96em;
+    color: #444;
+    padding: 5px 10px;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    float: right;
+    
+}
+
+
+
+footer {
+    padding: 1em 3.6em;
+    color: #999;
+    text-align: center;
+    clear: both;
+}

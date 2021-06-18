@@ -1,49 +1,49 @@
 {{ define "content"}}
-<div class="res-cons">
-    {{ partial "toc" . }}
-    <article class="post">
-        <header>
-            <h1 class="post-title">{{ .Title }}</h1>
-        </header>
-        <date class="post-meta meta-date">
-            {{ .Date.Format "January 2, 2006" }}
-        </date>
-        {{ with .Params.Categories }}
-        <div class="post-meta">
-            <span>|</span>
-            {{ range . }}
-            <span class="meta-category"><a href='{{ "categories/" | relURL }}{{ . | urlize }}'>{{ . }}</a></span>
-            {{ end }}
-        </div>
+
+{{ partial "toc" . }}
+<article class="post">
+    <header>
+        <h1 class="post-title">{{ .Title }}</h1>
+    </header>
+    <date class="post-meta meta-date">
+        {{ .Date.Format "January 2, 2006" }}
+    </date>
+    {{ with .Params.Categories }}
+    <div class="post-meta">
+        <span>|</span>
+        {{ range . }}
+        <span class="meta-category"><a href='{{ "categories/" | relURL }}{{ . | urlize }}'>{{ . }}</a></span>
         {{ end }}
+    </div>
+    {{ end }}
 
-        {{ if .Params.toc }}
-        <div class="clear" style="display: none">
-            <div class="toc-article">
-                <div class="toc-title">Contents</div>
-            </div>
+    {{ if .Params.toc }}
+    <div class="clear" style="display: none">
+        <div class="toc-article">
+            <div class="toc-title">Contents</div>
         </div>
-        {{ end }}
-        <div class="post-content">
-            {{ .Content }}
-        </div>
+    </div>
+    {{ end }}
+    {{ .Content }}
+    <div class="post-content">
+    </div>
 
-        {{ partial "copyright" .}}
+    {{ partial "copyright" .}}
 
-        {{ partial "related" . }}
+    {{ partial "related" . }}
 
-        <div class="post-meta meta-tags">
-            {{ if and (isset .Params "tags") .Params.tags }}
-            <ul class="clearfix">
-                {{ range .Params.Tags }}
-                <li><a href='{{ "tags/" | relURL }}{{ . | urlize }}'>{{ . }}</a></li>
-                {{ end }}
-            </ul>
-            {{ else }}
-            This post has no tags...
+    <div class="post-meta meta-tags">
+        {{ if and (isset .Params "tags") .Params.tags }}
+        <ul class="clearfix">
+            {{ range .Params.Tags }}
+            <li><a href='{{ "tags/" | relURL }}{{ . | urlize }}'>{{ . }}</a></li>
             {{ end }}
-        </div>
-    </article>
-    {{ partial "comments" . }}
-</div>
+        </ul>
+        {{ else }}
+        This post has no tags...
+        {{ end }}
+    </div>
+</article>
+{{ partial "comments" . }}
+
 {{ end }}
